@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carrito - LUMENYX</title>
+    <link rel="stylesheet" href="assets/css/cart-styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="header-back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </a>
+            <a href="index.html" class="header-logo">LUMENYX</a>
+            <div class="header-spacer"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+          
+        <div class="container">
+            <div class="grid-layout">
+                <!-- Left Column - Products -->
+                <div class="left-column">
+                    <h1 class="title">Resumen de tu Carrito</h1>
+                    <p class="subtitle"><span id="itemCount">1</span> producto(s)</p>
+
+                    <!-- Products List -->
+                    <div class="products-container" id="productsContainer">
+                        <!-- Products will be inserted here by JavaScript -->
+                    </div>
+
+                    <!-- Shipping Info -->
+                    <div class="shipping-section">
+                        <h3 class="section-title">Información de Envío</h3>
+                        
+                        <div class="shipping-box">
+                            <div class="shipping-icon">✓</div>
+                            <div>
+                                <p class="shipping-title">Entrega Rápida</p>
+                                <p class="shipping-subtitle">2-3 días hábiles</p>
+                            </div>
+                        </div>
+
+                        <div class="shipping-box">
+                            <div class="shipping-icon">✓</div>
+                            <div>
+                                <p class="shipping-title">Garantía Premium</p>
+                                <p class="shipping-subtitle">24 meses de cobertura completa</p>
+                            </div>
+                        </div>
+
+                        <div class="shipping-box">
+                            <div class="shipping-icon">✓</div>
+                            <div>
+                                <p class="shipping-title">Soporte Técnico 24/7</p>
+                                <p class="shipping-subtitle">Asistencia en español siempre disponible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Order Summary -->
+                <div class="right-column">
+                    <!-- Discount Code -->
+                    <div class="discount-section">
+                        <label class="discount-label">CÓDIGO DE DESCUENTO</label>
+                        <div class="discount-input-group">
+                            <input 
+                                type="text" 
+                                id="discountCode" 
+                                placeholder="Ingresa tu código" 
+                                class="discount-input"
+                            >
+                            <button class="discount-button" onclick="applyDiscount()">Aplicar</button>
+                        </div>
+                        <p class="discount-message" id="discountMessage"></p>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="order-summary-box">
+                        <h2 class="summary-title">Resumen del Pedido</h2>
+
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span class="summary-label">Subtotal</span>
+                                <span class="summary-value" id="subtotal">$0</span>
+                            </div>
+                            <div class="summary-row" id="discountRow" style="display: none;">
+                                <span class="summary-label">Descuento (<span id="discountPercent">0</span>%)</span>
+                                <span class="summary-value summary-discount" id="discountAmount">-$0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Envío</span>
+                                <span class="summary-value" id="shipping">$0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">IVA (21%)</span>
+                                <span class="summary-value" id="tax">$0</span>
+                            </div>
+                        </div>
+
+                        <div class="summary-total">
+                            <span class="total-label">Total</span>
+                            <span class="total-value" id="total">$0</span>
+                        </div>
+
+                        <button class="button button-transfer">Transferir Pedido</button>
+                        <button class="button button-paypal">Pagar con PayPal</button>
+                    </div>
+
+            </div>
+        </div>
+    </main>
+ <!-- ========================= FOOTER LUMENYX ========================= -->
+<footer class="footer new-footer" aria-label="Pie de página LUMENYX">
+  <div class="footer-container">
+
+    <!-- Columna 1 -->
+    <div class="footer-col">
+      <h4>LUMENYX</h4>
+      <ul>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Garantía</a></li>
+        <li><a href="#">Soporte Técnico</a></li>
+        <li><a href="#">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="footer-col">
+      <h4>Compras</h4>
+      <ul>
+        <li><a href="#">Métodos de Pago</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Seguimiento</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Política de Cookies</a></li>
+        <li><a href="#">Mapa del Sitio</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna Redes -->
+    <div class="footer-col footer-social-col">
+      <h4>Redes</h4>
+
+      <!-- Redes — SVGs mejorados (reemplaza tu bloque .footer-socials actual) -->
+             <div class="footer-socials">
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg xmlns="https://www.instagram.com/lumenyxtc?igsh=MTBkbmJtamRncjBrZg==" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          
+          <!-- TikTok -->
+          <a href="#" aria-label="TikTok" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:tuemail@gmail.com" aria-label="Email" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="#" aria-label="WhatsApp" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 1h4a.5.5 0 0 0 1-1v-1a.5.5 0 0 0-1-1h-4a.5.5 0 0 0-1 1v1z"/></svg>
+          </a>
+        </div>
+
+        <div class="footer-contact-info">
+          <a href="mailto:tuemail@gmail.com" class="contact-link">tuemail@gmail.com</a>
+        </div>
+
+           <div class="footer-contact-info">
+                  <a href="tel:+346XXXXXXXX" class="contact-link">+34 6X XXX XXXX</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 LUMENYX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+    <script src="assets/js/cart-script.js"></script>
+</body>
+</html>

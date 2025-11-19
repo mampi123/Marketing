@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMENYX - Computadoras de Calidad</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Added Google Fonts for a more professional look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="logo" data-nav-target="top">LUMENYX</a>
+
+    <!-- dentro de .nav-container -->
+<div class="nav-links" role="navigation">
+  <a href="#productsSection" class="nav-link">Productos</a>
+  <a href="#philosophySection" class="nav-link">Nuestra Historia</a>
+  <a href="#faqSection" class="nav-link">FAQ</a>
+  <a href="techhub.html" class="nav-techhub-badge">Tech Hub</a>
+
+</div>
+
+<div class="nav-actions">
+  <form class="nav-search" onsubmit="event.preventDefault(); doSearch();">
+    <input id="navSearch" type="search" placeholder="Buscar modelo, i7..." aria-label="Buscar">
+  </form>
+
+<a href="https://wa.me/34610699853" target="_blank" class="contact-btn">
+  Contacto
+</a>
+
+  <!-- MINI-CART: reemplaza el antiguo botón/carrito por este bloque -->
+<div class="cart-wrap">
+  <a href="cart.html" class="cart-button" aria-label="Ir al carrito" style="text-decoration:none;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="9" cy="21" r="1"></circle>
+      <circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+
+    <!-- badge del carrito -->
+    <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+  </a>
+</div>
+
+
+ 
+
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">☰</button>
+</div>
+  </div>
+</nav>
+
+
+  <!-- Main Container -->
+  <div id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero Lumenyx">
+      <div class="hero-container">
+        <div class="hero-grid">
+          <!-- Left: Texto -->
+          <div class="hero-left">
+            <h1 class="hero-title">
+              Computadoras de Calidad, <br><span class="hero-subtitle">Precios Accesibles</span>
+            </h1>
+            <p class="hero-description">
+              Tecnología premium al alcance de todos. Ordenadores potentes, confiables y con garantía directa. Diseñados para elevar tu productividad.
+            </p>
+
+             <!-- Scroll indicator mejorado (reemplaza el anterior) -->
+            <button class="scroll-indicator enhanced" id="heroScrollBtn" onclick="scrollToProducts()" aria-label="Ir a ver productos">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="si-text">Ver Productos</span>
+              <svg class="si-chevron" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </button>
+
+            <ul class="hero-features" role="list">
+              <li>✓ Envío rápido y seguro</li>
+              <li>✓ 2 años de garantía</li>
+              <li>✓ Soporte 24/7</li>
+            </ul>
+
+            
+          </div>
+
+          <!-- Right: Imagen / Composición -->
+         <div class="hero-right" aria-hidden="true">
+  <div class="hero-visual">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
+  <source src="Diseño sin título.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay">
+  <button class="cta-primary" onclick="scrollToProducts()">Ver Productos</button>
+</div>
+
+    <video 
+      class="hero-video" 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src="Diseño sin título.mp4" type="video/mp4">
+    </video>
+
+    <div class="glow"></div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+<!-- NUESTRA FILOSOFÍA (REEMPLAZO CORREGIDO) -->
+<section id="philosophySection" class="philosophy" aria-label="Nuestra Filosofía">
+  <div class="philosophy-inner">
+    <!-- LEFT: texto y CTAs -->
+    <div class="philos-left">
+      <h2 class="philos-title">Nuestra Filosofía</h2>
+
+      <p class="philos-lead">
+        LUMENYX nace de una idea simple: la excelencia no debería ser un lujo.
+        Eliminamos intermediarios para ofrecer tecnología de punta a su valor real.
+      </p>
+
+      <p class="philos-text">
+        Cada equipo es ensamblado con precisión y sometido a pruebas rigurosas.
+        Ofrecemos 2 años de garantía y soporte en español para que tu inversión esté asegurada.
+      </p>
+
+      <div class="philos-cta">
+        <button class="btn btn-black" onclick="scrollToProducts()" aria-label="Ver productos destacados">Ver productos destacados</button>
+<button class="btn btn-outline"
+        onclick="window.open('https://wa.me/34610699853', '_blank')" aria-label="Contactar"> Contactar
+</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Quote card (centrado verticalmente) -->
+    <div class="philos-right" aria-hidden="true">
+      <!-- Quote dinámico: reemplaza la estructura anterior -->
+<!-- Quote dinámico (solo autoplay, sin botones) -->
+<div class="quote-card dynamic-quote" aria-live="polite" tabindex="0">
+  <div class="quotes-wrap">
+    <div class="quote-slide active" data-index="0">
+      <p class="quote-text">“Diseñamos equipos con foco en durabilidad y rendimiento.”</p>
+      <div class="quote-author">— <strong>Equipo LUMENYX</strong></div>
+    </div>
+
+    <div class="quote-slide" data-index="1" aria-hidden="true">
+      <p class="quote-text">“Calidad y soporte real: pruebas y garantías que cumplen.”</p>
+      <div class="quote-author">— <strong>Clientes LUMENYX</strong></div>
+    </div>
+
+    <div class="quote-slide" data-index="2" aria-hidden="true">
+      <p class="quote-text">“Rendimiento consistente sin pagar sobreprecio.”</p>
+      <div class="quote-author">— <strong>Pruebas internas</strong></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <!-- STATS: esto queda FUERA del grid (.philosophy-inner) para que aparezca después -->
+  <div class="philos-stats" role="list" aria-hidden="true">
+    <div class="stat">
+      <p class="stat-number" data-target="10000">0</p>
+      <p class="stat-label">Computadoras vendidas</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number" data-target="98">0</p>
+      <p class="stat-label">Satisfacción (%)</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number" data-target="2">0</p>
+      <p class="stat-label">Años de garantía</p>
+    </div>
+  </div>
+</section>
+<!-- FIN NUESTRA FILOSOFÍA -->
+
+
+
+
+    <!-- Products Section -->
+    <section class="products" id="productsSection">
+      <div class="products-container">
+        <h2 class="products-title">Nuestra Colección</h2>
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be generated by JS -->
+        </div>
+      </div>
+    </section>
+<!-- reemplaza o añade en tu index.html -->
+
+<!-- Main FAQ section -->
+<section id="faqSection" class="faq-section" aria-labelledby="faqTitle">
+  <div class="container">
+    <header class="faq-header">
+      <h1 id="faqTitle" class="faq-title">Preguntas Frecuentes</h1>
+      <p class="faq-sub">Respuestas rápidas para ayudarte a elegir y usar tu equipo LUMENYX.</p>
+    </header>
+
+    <div id="faqList" class="faq-list" role="list" aria-live="polite">
+      <!-- FAQ items se generan desde JS -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================= -->
+
+
+ <!-- ========================= FOOTER LUMENYX ========================= -->
+<footer class="footer new-footer" aria-label="Pie de página LUMENYX">
+  <div class="footer-container">
+
+    <!-- Columna 1 -->
+    <div class="footer-col">
+      <h4>LUMENYX</h4>
+      <ul>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Garantía</a></li>
+        <li><a href="#">Soporte Técnico</a></li>
+        <li><a href="#">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="footer-col">
+      <h4>Compras</h4>
+      <ul>
+        <li><a href="#">Métodos de Pago</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Seguimiento</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Política de Cookies</a></li>
+        <li><a href="#">Mapa del Sitio</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna Redes -->
+    <div class="footer-col footer-social-col">
+      <h4>Redes</h4>
+
+      <!-- Redes — SVGs mejorados (reemplaza tu bloque .footer-socials actual) -->
+             <div class="footer-socials">
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/lumenyxtc?igsh=MTBkbmJtamRncjBrZg==" target="_blank" aria-label="Instagram" class="social-link">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+</a>
+
+          
+          <!-- TikTok -->
+          <a href="#" aria-label="TikTok" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:tuemail@gmail.com" aria-label="Email" class="social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+
+          <!-- WhatsApp -->
+         <a href="https://wa.me/34610699853" target="_blank" aria-label="WhatsApp" class="social-link">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+    <path d="M9 10a.5.5 0 0 0 1 1h4a.5.5 0 0 0 1-1v-1a.5.5 0 0 0-1-1h-4a.5.5 0 0 0-1 1v1z"/>
+  </svg>
+</a>
+
+        </div>
+
+        <div class="footer-contact-info">
+          <a href="mailto:tuemail@gmail.com" class="contact-link">tuemail@gmail.com</a>
+        </div>
+
+           <div class="footer-contact-info">
+                  <a href="tel:+34610699853" class="contact-link">+34 6X XXX XXXX</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 LUMENYX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+<!-- ========================= END FOOTER ========================= -->
+
+
+
+
+<!-- FontAwesome Icons (si no lo tienes) -->
+
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
