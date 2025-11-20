@@ -276,5 +276,23 @@
      <script src="assets/js/cart-script.js"></script>
   <script src="assets/js/techhub.js"></script>
   <script src="assets/js/script.js"></script>
+
+ <!-- PLAYER BAR -->
+<div id="playerBar" class="player-bar" aria-hidden="true">
+  <div class="player-info">
+    <img id="playerImage" src="" alt="cover" />
+    <div class="player-text">
+      <h4 id="playerTitle"></h4>
+      <p id="playerTime"></p>
+    </div>
+  </div>
+
+  <div class="player-controls" style="flex:1; min-width:200px;">
+    <audio id="audioPlayer" controls style="width:100%"></audio>
+  </div>
+
+  <button class="player-close" id="playerCloseBtn" aria-label="Cerrar reproductor">✕</button>
+</div>
+ 
 </body>
 </html>

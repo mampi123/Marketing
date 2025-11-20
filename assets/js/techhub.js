@@ -7,6 +7,8 @@ const episodes = [
     date: "15 Nov 2025",
     image: "developer-setup.jpg",
     desc: "Descubre cómo implementar herramientas de IA en tu pequeño negocio sin necesidad de un equipo técnico. Casos reales de ahorro de tiempo.",
+    // en techhub.js dentro del objeto del episodio correspondiente
+    audio: "Inversión_IA_2025_GPU_VRAM_manda.m4a",
     tags: ["pymes", "ia"],
     takeaways: [
       "Herramientas gratuitas para empezar hoy",
@@ -202,38 +204,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
- // Normalizar campos mínimos
-  const id = String(product.id ?? product.sku ?? Date.now());
-  const name = product.name ?? 'Producto';
-  const price = Number(product.price ?? product.price_value ?? 0) || 0;
-  const image = product.image ?? product.img ?? '';
-  const specs = product.specs ? (Array.isArray(product.specs) ? product.specs.join(' • ') : product.specs) : (product.description || '');
-  const quantityToAdd = Number(product.quantity ?? 1) || 1;
+// funciones para controlar el reproductor
+function openPlayer(ep) {
+  const bar = document.getElementById('playerBar');
+  const audio = document.getElementById('audioPlayer');
+  const image = document.getElementById('playerImage');
+  const title = document.getElementById('playerTitle');
+  const time = document.getElementById('playerTime');
 
-  // Cargar carrito desde la variable global / storage
-  // Usamos la variable `cart` si existe (tu script tiene `let cart = []`), sino fallback a storage
-  try {
-    if (typeof cart === 'undefined') window.cart = [];
-  } catch(e){ window.cart = []; }
+  if (!ep) return alert('Episodio no encontrado');
 
-  const existing = cart.find(it => String(it.id) === id);
-  if (existing) {
-    existing.quantity = Number(existing.quantity || 0) + quantityToAdd;
-    // actualizar datos si están vacíos
-    if ((!existing.name || existing.name === '') && name) existing.name = name;
-    if ((!existing.price || existing.price === 0) && price !== 0) existing.price = price;
-    if (!existing.image && image) existing.image = image;
-  } else {
-    cart.push({
-      id: id,
-      name: name,
-      price: price,
-      quantity: quantityToAdd,
-      image: image,
-      specs: specs
-    });
+  image.src = ep.image || '';
+  title.textContent = ep.title || 'Podcast';
+  time.textContent = (ep.duration ? (ep.duration + ' • ') : '') + (ep.date || '');
+
+  // asigna la fuente de audio (m4a, mp3 o mp4)
+  audio.src = ep.audio || ep.video || '';
+  audio.load();
+  // intenta reproducir; si el navegador bloquea autoplay, el usuario deberá pulsar play en el control
+  audio.play().catch(() => {/* autoplay puede estar bloqueado; el usuario pulsa play */});
+
+  bar.classList.add('active');
+  bar.setAttribute('aria-hidden', 'false');
+}
+
+function closePlayer() {
+  const bar = document.getElementById('playerBar');
+  const audio = document.getElementById('audioPlayer');
+  if (audio) {
+    audio.pause();
+    audio.src = '';
   }
+  bar.classList.remove('active');
+  bar.setAttribute('aria-hidden', 'true');
+}
 
-  // guardar y refrescar UI (llama a las funciones que ya tiene tu script)
-  try { saveCartToStorage(); } catch(e){ localStorage.setItem('cart', JSON.stringify(cart)); }
-  try { updateCartUI(); } catch(e){ /* si no existe, refrescar mini cart */ refreshMiniCart(); }
+// escucha clicks en los botones "Escuchar" (delegación)
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('.play-btn');
+  if (!btn) return;
+  const id = parseInt(btn.dataset.id, 10);
+  const ep = episodes.find(x => x.id === id);
+  if (!ep) { alert('Episodio no encontrado'); return; }
+  if (!ep.audio && !ep.video) { alert('Aún no hay archivo para este episodio'); return; }
+  openPlayer(ep);
+});
+
+// cerrar player (botón)
+document.getElementById('playerCloseBtn')?.addEventListener('click', closePlayer);
+
