@@ -201,3 +201,39 @@ document.addEventListener('DOMContentLoaded', () => {
     renderEpisodes(activeFilter, e.target.value);
   });
 });
+
+ // Normalizar campos mínimos
+  const id = String(product.id ?? product.sku ?? Date.now());
+  const name = product.name ?? 'Producto';
+  const price = Number(product.price ?? product.price_value ?? 0) || 0;
+  const image = product.image ?? product.img ?? '';
+  const specs = product.specs ? (Array.isArray(product.specs) ? product.specs.join(' • ') : product.specs) : (product.description || '');
+  const quantityToAdd = Number(product.quantity ?? 1) || 1;
+
+  // Cargar carrito desde la variable global / storage
+  // Usamos la variable `cart` si existe (tu script tiene `let cart = []`), sino fallback a storage
+  try {
+    if (typeof cart === 'undefined') window.cart = [];
+  } catch(e){ window.cart = []; }
+
+  const existing = cart.find(it => String(it.id) === id);
+  if (existing) {
+    existing.quantity = Number(existing.quantity || 0) + quantityToAdd;
+    // actualizar datos si están vacíos
+    if ((!existing.name || existing.name === '') && name) existing.name = name;
+    if ((!existing.price || existing.price === 0) && price !== 0) existing.price = price;
+    if (!existing.image && image) existing.image = image;
+  } else {
+    cart.push({
+      id: id,
+      name: name,
+      price: price,
+      quantity: quantityToAdd,
+      image: image,
+      specs: specs
+    });
+  }
+
+  // guardar y refrescar UI (llama a las funciones que ya tiene tu script)
+  try { saveCartToStorage(); } catch(e){ localStorage.setItem('cart', JSON.stringify(cart)); }
+  try { updateCartUI(); } catch(e){ /* si no existe, refrescar mini cart */ refreshMiniCart(); }

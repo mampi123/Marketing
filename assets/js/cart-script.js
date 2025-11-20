@@ -936,3 +936,4 @@ function escapeHtml(str) {
    Ejecutá esto en la consola si querés ver el JSON actual del carrito:
    JSON.stringify(JSON.parse(localStorage.getItem('cart')||'[]'), null, 2)
 */
+

@@ -8,17 +8,36 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <a href="index.html" class="header-back">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </a>
-            <a href="index.html" class="header-logo">LUMENYX</a>
-            <div class="header-spacer"></div>
-        </div>
-    </header>
+
+    <!-- Navigation -->
+<!-- Navigation -->
+ <!-- Navigation -->
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo" data-nav-target="top">LUMENYX</a>
+
+    <!-- dentro de .nav-container -->
+<div class="nav-links" role="navigation">
+  <a href="index.html#productsSection" class="nav-link">Productos</a>
+  <a href="index.html#philosophySection" class="nav-link">Nuestra Historia</a>
+  <a href="index.html#faqSection" class="nav-link">FAQ</a>
+  <a href="techhub.html" class="nav-techhub-badge">Tech Hub</a>
+
+</div>
+
+<div class="nav-actions">
+  <form class="nav-search" onsubmit="event.preventDefault(); doSearch();">
+    <input id="navSearch" type="search" placeholder="Buscar modelo, i7..." aria-label="Buscar">
+  </form>
+
+<a href="https://wa.me/34610699853" target="_blank" class="contact-btn">
+  Contacto
+</a>
+
+  <!-- MINI-CART: reemplaza el antiguo botón/carrito por este bloque -->
+
+  </div>
+</nav>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -196,5 +215,10 @@
     </div>
   </footer>
     <script src="assets/js/cart-script.js"></script>
+    <style>
+      body.has-fixed-nav {
+  padding-top: 15px;
+}
+    </style>
 </body>
 </html>
