@@ -1134,3 +1134,4 @@ function addToCart(productOrId) {
   try { saveCartToStorage(); } catch(e){ localStorage.setItem('cart', JSON.stringify(cart)); }
   try { updateCartUI(); } catch(e){ /* si no existe, refrescar mini cart */ refreshMiniCart(); }
 }
+

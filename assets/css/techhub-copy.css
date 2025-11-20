@@ -4224,3 +4224,83 @@ html {
   color: #fff;
   font-size:0.85rem;
 }
+
+.radar-widget {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.radar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--th-border);
+}
+.radar-item:last-child {
+  border-bottom: none;
+}
+.radar-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--th-primary);
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.radar-content {
+  flex: 1;
+}
+.radar-date {
+  font-size: 0.80rem;
+  color: var(--th-text-muted);
+}
+.radar-text {
+  margin-top: 2px;
+  font-size: 0.95rem;
+  color: var(--th-text);
+}
+.radar-item a {
+  text-decoration: none;
+  color: inherit;
+}
+.radar-item a:hover .radar-text {
+  text-decoration: underline;
+}
+
+.radar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.radar-item:last-child {
+  border-bottom: none;
+}
+
+.radar-dot {
+  width: 8px;
+  height: 8px;
+  background: #0b66ff;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.radar-content .radar-date {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.radar-content .radar-text {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.radar-item a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  gap: 10px;
+}

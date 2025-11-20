@@ -8,7 +8,7 @@ const episodes = [
     image: "developer-setup.jpg",
     desc: "Descubre cómo implementar herramientas de IA en tu pequeño negocio sin necesidad de un equipo técnico. Casos reales de ahorro de tiempo.",
     // en techhub.js dentro del objeto del episodio correspondiente
-    audio: "Inversión_IA_2025_GPU_VRAM_manda.m4a",
+    audio: "Plan_secreto_de_LUMENYX_vender_IA_a_pymes (1).m4a",
     tags: ["pymes", "ia"],
     takeaways: [
       "Herramientas gratuitas para empezar hoy",
@@ -27,6 +27,7 @@ const episodes = [
     date: "10 Nov 2025",
     image: "gpu-hardware.jpg",
     desc: "Analizamos las mejores configuraciones de GPU para 2025. ¿Vale la pena invertir en una 4090 o esperar a la nueva generación?",
+    audio: "Inversión_IA_2025_GPU_VRAM_manda.m4a",
     tags: ["hardware", "advanced"],
     takeaways: [
       "VRAM vs RAM del sistema",
@@ -45,6 +46,7 @@ const episodes = [
     date: "05 Nov 2025",
     image: "warehouse-automation.jpg",
     desc: "Entrevista con expertos en logística sobre cómo los robots autónomos están cambiando la gestión de inventario.",
+    audio: "Almacenes_del_Futuro_Cobots_e_IA_para_PYMES (1).m4a",
     tags: ["automation", "advanced"],
     takeaways: [
       "Robots colaborativos (Cobots)",
@@ -57,11 +59,6 @@ const episodes = [
   }
 ];
 
-const news = [
-  { text: "Nueva serie de procesadores Intel Ultra anunciada para Q1 2026", date: "Hace 2h" },
-  { text: "OpenAI lanza modelo optimizado para hardware local", date: "Hace 5h" },
-  { text: "Lumenyx abre nuevo centro de soporte en Madrid", date: "Ayer" }
-];
 
 // Renderizar Episodios
 function renderEpisodes(filter = 'all', searchTerm = '') {
@@ -98,7 +95,7 @@ function renderEpisodes(filter = 'all', searchTerm = '') {
             <h3 class="episode-title">${ep.title}</h3>
           </div>
           <button class="btn btn-primary btn-sm play-btn" data-id="${ep.id}">
-            ▶ Escuchar
+            Escuchar
           </button>
         </div>
         
@@ -253,3 +250,107 @@ document.addEventListener('click', function(e){
 // cerrar player (botón)
 document.getElementById('playerCloseBtn')?.addEventListener('click', closePlayer);
 
+// ---------------------------
+// Mejora cierre del player
+// ---------------------------
+
+function closePlayer() {
+  const bar = document.getElementById('playerBar');
+  const audio = document.getElementById('audioPlayer');
+
+  if (!bar) return;
+  // Pausa y resetea el audio
+  if (audio) {
+    try {
+      audio.pause();
+      audio.currentTime = 0;
+      // Limpia la fuente para liberar recursos
+      audio.removeAttribute('src');
+      audio.load();
+    } catch (err) {
+      console.warn('Error al parar el audio:', err);
+    }
+  }
+
+  // Oculta el player
+  bar.classList.remove('active');
+  bar.setAttribute('aria-hidden', 'true');
+}
+
+// Aseguramos listeners cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+  // Botón X
+  const btnClose = document.getElementById('playerCloseBtn');
+  if (btnClose) {
+    btnClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closePlayer();
+    });
+  }
+
+  // Cerrar al presionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const bar = document.getElementById('playerBar');
+      if (bar && bar.classList.contains('active')) closePlayer();
+    }
+  });
+
+  // Cerrar al hacer click fuera del player (pero no cuando clicas en botones "Escuchar")
+  document.addEventListener('click', (e) => {
+    const bar = document.getElementById('playerBar');
+    if (!bar) return;
+    if (!bar.classList.contains('active')) return;
+
+    // Si el click NO está dentro del player y NO es un click en un .play-btn -> cerrar
+    const clickedInsidePlayer = !!e.target.closest('#playerBar');
+    const clickedPlayBtn = !!e.target.closest('.play-btn');
+
+    if (!clickedInsidePlayer && !clickedPlayBtn) {
+      closePlayer();
+    }
+  }, true);
+
+  // Si el audio termina, ocultar player automáticamente
+  const audioEl = document.getElementById('audioPlayer');
+  if (audioEl) {
+    audioEl.addEventListener('ended', () => {
+      closePlayer();
+    });
+  }
+});
+
+const news = [
+  {
+    text: "Nueva serie de procesadores Intel Ultra anunciada para Q1 2026",
+    date: "Hace 2h",
+    url: "https://www.estrategiasdeinversion.com/actualidad/noticias/bolsa-eeuu/intel-presenta-su-nuevo-chip-core-ultra-serie-n-852877"
+  },
+  {
+    text: "OpenAI lanza modelo optimizado para hardware local",
+    date: "Hace 5h",
+    url: "https://es.digitaltrends.com/computadoras/el-modelo-abierto-de-openai-ya-esta-disponible-en-windows/"
+  },
+  {
+    text: "Quantax utilizará la IA para ayudar a pymes y autónomos a emitir factura electrónica a partir de 2026",
+    date: "Ayer",
+    url: "https://www.msn.com/es-es/dinero/noticias/quantax-utilizar%C3%A1-la-ia-para-ayudar-a-pymes-y-aut%C3%B3nomos-a-emitir-factura-electr%C3%B3nica-a-partir-de-2026/ar-AA1QJTZm?ocid=BingNewsVerp" // cámbialo si quieres
+  }
+];
+
+function renderNews() {
+  const container = document.getElementById('newsList');
+  if (!container) return;
+
+  container.innerHTML = news.map(n => `
+    <div class="radar-item">
+      <a href="${n.url}" target="_blank" rel="noopener">
+        <span class="radar-dot"></span>
+        <div class="radar-content">
+          <div class="radar-date">${n.date}</div>
+          <div class="radar-text">${n.text}</div>
+        </div>
+      </a>
+    </div>
+  `).join('');
+}
