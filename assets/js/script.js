@@ -15,7 +15,7 @@ let products = [
     price: 730,
     specs: ['Intel i5 12th Gen', '16GB RAM', '512GB SSD', 'Pantalla Retina'],
     description: 'Equilibrio perfecto entre potencia y portabilidad. Ideal para profesionales en movimiento.',
-    image: 'laptop-performance.jpg'
+    image: 'Martina_“Ordenador_de_sobremesa_minimalista_sobre_un_escritorio_ordenado_c5463d23-410c-4a4c-84e6-6ad78d582a57.jpg'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ let products = [
     price: 1165,
     specs: ['Intel i7 12th Gen', '32GB RAM', '1TB SSD', 'RTX 3080'],
     description: 'Máximo rendimiento para tareas exigentes. Diseño térmico avanzado y construcción premium.',
-    image: 'laptop-elite.jpg'
+    image: 'Martina_“Ordenador_potente_con_estética_profesional_(no_gamer_RGB),_tonos_b2a614f6-bd4d-448a-b54d-1f7d9017379e.jpg'
   }
 ];
 

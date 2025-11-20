@@ -3011,3 +3011,43 @@ html {
   background: #dbe9ff;
   color: #1e40af;
 }
+
+/* ===== IMÁGENES: mostrar tal cual (sin zoom, sin recorte) ===== */
+.product-image {
+  background: #f8f8f8;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Ajusta la altura máxima de la caja pero permite imágenes más altas si hace falta */
+  height: auto;            /* quita altura fija */
+  max-height: 320px;       /* controla el alto máximo visual */
+  padding: 0.25rem;        /* pequeño acolchado para que no quede pegada al borde */
+  border: 1px solid #eaeaea;
+}
+
+/* Imagen: nunca estirar más allá de su tamaño natural, mostrar completa y centrada */
+.product-image img {
+  display: block;          /* evita espacio en línea */
+  max-width: 100%;         /* ancho máximo: contenedor */
+  max-height: 100%;        /* alto máximo: contenedor */
+  width: auto;             /* deja que respete proporciones naturales */
+  height: auto;
+  object-fit: contain;     /* mostrar completa dentro del contenedor */
+  object-position: center; /* centrar la imagen */
+  transform: none !important;
+  transition: none !important;
+}
+
+/* aseguramos que ningún hover escale la imagen */
+.product-card:hover .product-image img,
+.product-card .product-image img {
+  transform: none !important;
+}
+
+/* si quieres que las tarjetas sigan teniendo efecto hover, mantenlo solamente en la tarjeta */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 40px rgba(0,0,0,0.06);
+}
