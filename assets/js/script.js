@@ -15,7 +15,7 @@ let products = [
     price: 730,
     specs: ['Intel i5 12th Gen', '16GB RAM', '512GB SSD', 'Pantalla Retina'],
     description: 'Equilibrio perfecto entre potencia y portabilidad. Ideal para profesionales en movimiento.',
-    image: 'diseño sin título (5).png'
+    image: 'laptop-performance.jpg'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ let products = [
     price: 1165,
     specs: ['Intel i7 12th Gen', '32GB RAM', '1TB SSD', 'RTX 3080'],
     description: 'Máximo rendimiento para tareas exigentes. Diseño térmico avanzado y construcción premium.',
-    image: 'laptop elitee.png'
+    image: 'laptop-elite.jpg'
   }
 ];
 
