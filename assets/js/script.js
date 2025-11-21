@@ -15,7 +15,7 @@ let products = [
     price: 730,
     specs: ['Intel i5 12th Gen', '16GB RAM', '512GB SSD', 'Pantalla Retina'],
     description: 'Equilibrio perfecto entre potencia y portabilidad. Ideal para profesionales en movimiento.',
-    image: 'Martina_“Ordenador_de_sobremesa_minimalista_sobre_un_escritorio_ordenado_c5463d23-410c-4a4c-84e6-6ad78d582a57.jpg'
+    image: 'diseño sin título (5).png'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ let products = [
     price: 1165,
     specs: ['Intel i7 12th Gen', '32GB RAM', '1TB SSD', 'RTX 3080'],
     description: 'Máximo rendimiento para tareas exigentes. Diseño térmico avanzado y construcción premium.',
-    image: 'Martina_“Ordenador_potente_con_estética_profesional_(no_gamer_RGB),_tonos_b2a614f6-bd4d-448a-b54d-1f7d9017379e.jpg'
+    image: 'laptop elitee.png'
   }
 ];
 
@@ -733,7 +733,7 @@ if(hv){
   // fallback: si no soportado o error -> mostrar imagen
   hv.addEventListener('error', ()=> {
     hv.style.display = 'none';
-    document.querySelector('.hero-visual').insertAdjacentHTML('afterbegin', '<img class="hero-main-image" src="laptop-elite.jpg" alt="Laptop">');
+    document.querySelector('.hero-visual').insertAdjacentHTML('afterbegin', '<img class="hero-main-image" src="laptop elitee.png" alt="Laptop">');
   });
 }
 
@@ -772,7 +772,7 @@ function updateMiniCartHTML(items) {
   }
   container.innerHTML = items.map(it => `
     <div class="mini-cart-item">
-      <img src="${it.image || 'laptop-elite.jpg'}" alt="${it.name}">
+      <img src="${it.image || 'laptop elitee.png'}" alt="${it.name}">
       <div class="meta">
         <div class="name">${it.name}</div>
         <div class="price">$${(it.price).toFixed(2)} × ${it.quantity}</div>
@@ -864,7 +864,7 @@ function updateMiniCartHTML(items) {
 
   container.innerHTML = items.map(it => `
     <div class="mini-cart-item">
-      <img src="${it.image || 'laptop-elite.jpg'}" alt="${(it.name||'Producto')}">
+      <img src="${it.image || 'laptop elitee.png'}" alt="${(it.name||'Producto')}">
       <div class="meta">
         <div class="name">${it.name || 'Sin nombre'}</div>
         <div class="price">$${(Number(it.price) || 0).toFixed(2)} × ${it.quantity || 1}</div>
